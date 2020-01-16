@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title> Nintendo Consoles </title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> <link rel="stylesheet" href="quiz.css">
+<style>
+h2 {
+  color: black;
+  background: white;
+  font-size: 20px;
+}
+
+h3 {
+  font-size: 20px;
+}
+</style>
+
+<div class="container">
+<script type="text/javascript">
+var pos = 0, test, test_status, question, choice, choices, chA, chB, chC, chD, correct = 0;
+var questions = [
+  ["What was the first console released in North America?", "Gameboy", "Color TV Game", "Family Computer", "Nintendo Entertainment System", "D"],
+  
+  ["What year did the Nintendo 64 come out?", "1990", "1996", "1994", "1998", "B"],
+  
+  ["Who created the GameBoy?", "Gunpei Yokoi", "Masayuki Uemura", "Shigeru Miyamoto", "Fusajiro Yamauchi", "A"],
+  
+  ["Which console was considered the worst Nintendo console?", "Wii U", "Gamecube", "Virtual Boy", "Nintendo Entertainment System", "C"],
+  
+  ["What year did the Nintendo 2ds come out?", "2006", "2011", "2013", "2015", "C"],
+  ];
+  
+function get(x){
+  return document.getElementById(x);
+}
+function renderQuestion(){
+  test = get("test");
+  if(pos >= questions.length){
+    test.innerHTML = "<h2>You got "+correct+" of "+questions.length+" questions correct</h2>";
+    get("test_status").innerHTML = "Test completed";
+
+    pos = 0;
+    correct = 0;
+
+    return false;
+  }
+  get("test_status").innerHTML = "Question "+(pos+1)+" of "+questions.length;
+  question = questions[pos][0];
+  chA = questions[pos][1];
+  chB = questions[pos][2];
+  chC = questions[pos][3];
+  chD = questions[pos][4];
+  test.innerHTML = "<h3>"+question+"</h3>";
+
+  test.innerHTML += "<input type='radio' name='choices' value='A'> "+chA+"<br>";
+  test.innerHTML += "<input type='radio' name='choices' value='B'> "+chB+"<br>";
+  test.innerHTML += "<input type='radio' name='choices' value='C'> "+chC+"<br>";
+  test.innerHTML += "<input type='radio' name='choices' value='D'> "+chD+"<br><br>";
+  test.innerHTML += "<button onclick='checkAnswer()'>Submit</button>";
+}
+function checkAnswer(){
+
+  choices = document.getElementsByName("choices");
+  for(var i=0; i<choices.length; i++){
+    if(choices[i].checked){
+      choice = choices[i].value;
+    }
+  }
+
+  if(choice == questions[pos][5]){
+
+    correct++;
+  }
+
+  pos++;
+
+  renderQuestion();
+}
+window.addEventListener("load", renderQuestion, false);
+</script>
+</head>
+
+<body>
+<nav>
+    <div class="topnav">
+	  <a href="contact.html">Contact</a>
+	  <a href="quiz.html">Quiz</a>
+	  <a href="funfact.html">Fun Fact</a>
+	  
+	  <div class="dropdown">
+    <button class="dropbtn">Years</button>
+    <div class="dropdown-content">
+      <a href="70s.html">1970's</a>
+      <a href="80s.html">1980's</a>
+      <a href="90s.html">1990's</a>
+      <a href="00s.html">2000's</a>
+	  <a href="10s.html">2010's</a>
+	</div>
+   </div>
+	  <a href="index.html">Home</a>
+	  
+		<h4>History of Nintendo Consoles</h4>
+	</div>
+</nav>
+
+<main>
+<h2>Fun Quiz</h2>
+<h2 id="test_status"></h2>
+<div id="test"></div>
+<br>
+<a href="https://en.wikipedia.org/wiki/Nintendo_video_game_consoles" target="_blank">Click here if you want to learn more about Nintendo consoles.</a>
+</div>
+</main>
+
+<footer id="footer">
+<br>
+  <p>&copy 2020 Amy Ajih | Contact Info: <a href="mailto:404972@mcpsmd.net.com">
+  404972@mcpsmd.net</a></p>
+</footer>
+
+</body>
+</html>
